@@ -20,36 +20,37 @@ const config: QuartzConfig = {
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
-      fontOrigin: "googleFonts",
-      cdnCaching: true,
-      typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+    fontOrigin: "googleFonts",
+    cdnCaching: true,
+    typography: {
+      // "Space Grotesk" has that futuristic/technical feel
+      header: "Space Grotesk",
+      // "JetBrains Mono" for reading text creates that raw data look
+      body: "JetBrains Mono",
+      code: "JetBrains Mono",
+    },
+    colors: {
+      lightMode: {
+        // We invert the "Light" mode to be a Stark/Industrial Light
+        light: "#f0f0f0",
+        lightgray: "#d4d4d4",
+        gray: "#888888",
+        darkgray: "#1a1a1a",
+        dark: "#000000",
+        secondary: "#008f11", // Dimmer matrix green for contrast
+        tertiary: "#00ff41",  // Bright neon green
+        highlight: "rgba(0, 255, 65, 0.15)",
       },
-      colors: {
-        lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
-        },
-        darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
-        },
+      darkMode: {
+        // The "Main" Theme: Deep Void Black & Neon
+        light: "#050505",     // Almost pure black background
+        lightgray: "#1f1f1f", // Borders
+        gray: "#666666",      // Muted text
+        darkgray: "#cccccc",  // Main text
+        dark: "#ffffff",      // Headers
+        secondary: "#00ff41", // The classic Terminal Green
+        tertiary: "#ccff00",  // A radioactive yellow-green for hover
+        highlight: "rgba(0, 255, 65, 0.15)",
       },
     },
   },
