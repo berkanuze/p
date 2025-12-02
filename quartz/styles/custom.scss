@@ -1,3 +1,88 @@
-@use "./base.scss";
+/* === GLOBAL BRUTALIST THEME === */
 
-// put your custom CSS here!
+/* 1. Kill all rounded corners. Sharp edges only. */
+* {
+  border-radius: 0px !important;
+}
+
+/* 2. The Container */
+body {
+  font-family: var(--bodyFont);
+  background-color: var(--light);
+  border-left: 2px solid var(--secondary); /* A solid green line on the left */
+  border-right: 2px solid var(--secondary);
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 900px;
+}
+
+/* 3. Headers as Terminal Blocks */
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 0.5rem;
+  color: var(--secondary) !important;
+}
+
+/* 4. Links */
+a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--secondary);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  background-color: var(--secondary);
+  color: var(--light) !important; /* Invert text on hover */
+}
+
+/* 5. Math Formulas */
+.katex-display {
+  border: 1px dashed var(--gray);
+  padding: 1rem;
+  background-color: #000000;
+}
+
+/* === THE CLASSICAL OVERRIDE === */
+/* This activates when you add 'cssclasses: [classical]' to Obsidian frontmatter */
+
+.classical {
+  /* Reset to Paper Aesthetics */
+  font-family: "Lora", serif !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+
+  /* Remove Brutalist Borders */
+  border: none !important;
+
+  h1, h2, h3 {
+    text-transform: none;
+    border-bottom: none;
+    color: #000000 !important;
+    font-family: "Lora", serif !important;
+  }
+
+  p {
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+
+  /* Make math look like print again */
+  .katex-display {
+    border: none;
+    background-color: transparent;
+  }
+
+  /* Standard Links */
+  a {
+    border-bottom: none;
+    color: #0000EE !important; /* Standard Web Blue */
+    text-decoration: underline;
+  }
+
+  a:hover {
+    background-color: transparent;
+  }
+}
