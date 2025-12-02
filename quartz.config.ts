@@ -54,6 +54,8 @@ const config: QuartzConfig = {
       },
     },
   },
+},
+
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
