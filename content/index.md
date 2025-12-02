@@ -2,5 +2,4 @@
 title: Digital Garden Draft
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+It purred and yawned
