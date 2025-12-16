@@ -1,0 +1,400 @@
+\documentclass[a4paper,oneside,12pt]{article}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc,decorations.markings}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}   % clean serif/sans family
+\usepackage{microtype}
+
+\usepackage[dvipsnames,svgnames]{xcolor}
+
+
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+\usepackage{amsmath, amsthm} % Some extra symbols
+\usepackage[bottom]{footmisc}
+\usepackage{cite}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{mdframed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{amssymb,bm,cite,graphicx, fixmath, texdraw}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{subfigure} % 
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{extpfeil}
+\usepackage{indentfirst}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{eqnarray}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{float}
+%\usepackage{physics}
+\usepackage[super]{nth}
+\usepackage{mwe}
+\usepackage{calligra}
+\usepackage[T1]{fontenc}
+%\usepackage{hyperref}
+\usepackage{etoolbox}
+\usepackage{amsmath, nccmath}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+
+
+
+\tcbset{
+  sectionstyle/.style={
+    enhanced,
+    colback=teal!8,
+    colframe=teal!70!black,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3pt,right=3pt,top=2pt,bottom=2pt,
+    fontupper=\sffamily\bfseries\large\color{teal!70!black},
+  }
+}
+
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \par\vspace{1em}%
+  \begin{tcolorbox}[sectionstyle]
+    \oldsection*{#1}
+  \end{tcolorbox}
+}
+
+
+\interdisplaylinepenalty=2500
+\hyphenation{lists} \makeatletter
+
+\newcommand{\field}[1]{\mathbb{#1} }
+\newcommand{\adj}[4]{#1\negmedspace: #2\rightleftarrows #3:\negmedspace #4}
+\newcommand{\beq}{\begin{equation} \setlength\abovedisplayskip{4pt} 
+\setlength\belowdisplayskip{4pt}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\defn}{\stackrel{\triangle}{=}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\nnl}{\nonumber \\}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\Hom}{\mathscr{H}\text{\kern -3pt {\calligra\large om}}\,}
+\DeclareMathOperator{\Rhom}{\mathscr{R}\text{\kern -3pt {Hom}}\,}
+
+\def\ifundefined{\@ifundefined}
+\def\bfat{\left[ \begin{array}}
+\def\emat{\end{array} \right]}
+\def\bfatt{\left\{ \begin{array}}
+\def\ematt{\end{array} \right.}
+\def\bset{\left\{ \begin{array}}
+\def\eset{\end{array} \right\}}
+\def\bpar{\left( \begin{array}}
+\def\epar{\end{array} \right)}
+
+\graphicspath{{figures/}} % Graphics will be here
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lm}{Lemma}[section]
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{ex}{Examples}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{nota}{Notation}[section]
+
+
+
+\definecolor{InriaLightBlue}{RGB}{0,180,160} 
+\definecolor{InriaBlue}{HTML}{305D8A}   % soft navy
+\definecolor{InriaCyan}{HTML}{3BAFDA}   % accent cyan
+\definecolor{InriaGray}{HTML}{4C4C4C}   % dark gray text
+\definecolor{InriaLight}{HTML}{E8EEF4}  % background wash
+
+\newmdenv[
+  linecolor=InriaBlue,
+  backgroundcolor=InriaBlue!5,
+  skipabove=8pt, skipbelow=8pt,
+  leftmargin=0pt,rightmargin=0pt,
+  innertopmargin=8pt,innerbottommargin=8pt
+]{theoremBox}
+
+\newmdenv[
+  linecolor=InriaLightBlue,
+  backgroundcolor=InriaLightBlue!5,
+  skipabove=8pt, skipbelow=8pt,
+  leftmargin=0pt,rightmargin=0pt,
+  innertopmargin=8pt,innerbottommargin=8pt
+]{definitionBox}
+
+
+\newmdenv[
+  linecolor=InriaGray,
+  backgroundcolor=red!5,
+  skipabove=8pt, skipbelow=8pt,
+  leftmargin=0pt,rightmargin=0pt,
+  innertopmargin=8pt,innerbottommargin=8pt
+]{remarkBox}
+\begin{document}
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+
+
+       \normalsize
+
+       \textbf{BOGAZICI UNIVERSITY}  
+       \vspace*{0.5cm}
+
+       \textbf{INSTITUTE OF GRADUATE STUDIES IN SCIENCE AND ENGINEERING} 
+       \vspace*{0.5cm}
+
+       \textbf{PHD THESIS PROPOSAL REPORT}
+
+       \vspace{0.5cm}
+       \textbf{15.11.2025}
+            
+       \vspace{0.5cm}
+
+        \large
+       \textbf{On Categorical Information Theory}
+
+        \vspace{1cm}
+
+
+       \textbf{Berkan Üze}
+
+       \vspace{2cm}
+
+
+      \textbf{Thesis Advisor:} 
+              \vspace{0.5cm}
+
+      Prof. Dr. Kazım İlhan İkeda 
+              \vspace{0.5cm}
+
+      \textbf{Thesis Committee Members:} 
+             \vspace{0.5cm}
+
+                          Assoc. Prof. Dr. Craig Charles Van Coevering \\
+                          \vspace{0.3cm}
+                          Prof. Dr. Atabey Kaygun
+            
+   \end{center}
+\end{titlepage}
+
+
+
+
+
+
+
+\title{}
+\author{Thesis Proposal}
+\date{2025}
+
+
+
+\maketitle
+
+
+This thesis is intended as a contribution to the burgeoning discipline of categorical information and probability theory. As such, a significant portion of it will be devoted to an exposition of the diverse background required to motivate the relevance of categorification in this setting. Our work is built on two parallel foundations, which have not as yet been linked together in the literature. One is the theory of information cohomology, introduced by Baudot and Bennequin and developed further by several other authors, which associates a cohomology theory to any partial order satisfying certain completeness conditions. This cohomology theory takes values in coefficient objects which come from functional analysis but carry an action by a certain monoid derived from a given partial order, which makes it possible to define a Hochschild-type cohomology theory. The main object of this theory is to give a cohomological intepretation to fundamental concepts in information theory, such as entropy and its higher and relative variants. The partial order encodes and abstracts the interdependence (more concretely, joint measurability) of random variables, and extends the common theme of looking at concepts from topology and measure theory in terms of lattice-theoretic and algebraic data. The second foundation is the theory of Markov categories, which goes back to the independent works of Giry and Lawvere on categorical foundations for probability theory. This theory is of interest for synthesizing the computational resources of the theory of information structures with the robust categorical framework afforded by Markov categories which have already found a vast amount of applications in categorical probability theory and theoretical computer science. We hope this synthesis will further our project which we detail at the end of this document. 
+
+\pagebreak
+
+
+\section{Background}
+We shall fix some notation for the rest of this document. The subject treated here straddles many seemingly unrelated disciplines, welded into coherent form by the machinery of category theory. Therefore our exposition of the prerequisites will take a concise and categorical form, except where foundations of information are concerned, where the categorical idiom constitutes a theoretical novelty. \\
+
+Our fundamental references are [1], [2], and [3] for information cohomology and [4] for the theory of $\mathbb{B}$-modules. While we do not cover the topic except in passing, the fundamental references for Markov categories and the category of Markov kernels are [5] and [6] respectively. We also make use of [7] for a proof of concept. \\
+
+
+
+\begin{definitionBox}
+\begin{dfn}
+A measurable space is a pair $(X, \sigma_{X})$ where $X$ is a set and  $\sigma_{X}$ is a $\sigma$-algebra.
+\end{dfn}
+\end{definitionBox}
+
+ We may think of the $\sigma$-algebra involved in the definition of a measurable space as an abstraction of the usual  $\sigma$-algebra of measurable sets in the more concrete setting. A closely related category is that of measure spaces, where we further specify a measure on $\sigma_{X}$, however, we will not be using this category very much in this work. 
+
+\begin{theoremBox}
+\begin{nota}
+  $Top$, $Meas$ and $Po$ denote the usual categories of topological spaces, measurable spaces and partial orders.   
+\end{nota}
+\end{theoremBox}
+
+ Some brief comments are in order regarding these categories. Firstly, we assume no further conditions on $Top$ for the moment, but in the body of the work, we will have to deal with more specific classes of topological spaces which are well-behaved from the point of view of duality theory. Let's note in passing that one may also regard $Po$ as a $2$-category, as we often treat partial orders as categories where $X<Y$ gives rise to a morphism (in our convention) $X \to Y$. We will address this ambiguity in the contexts where it arises.
+
+ In order to define information cohomology, we need to focus on a very important subclass of partial orders, that of meet semilattices.
+ \begin{definitionBox}
+ \begin{dfn}
+     Let $X$ be a partial order. Given any $x,y \in X$, we denote by $x \wedge y$ ($x \vee y$) their largest common lower bound (least common upper bound) provided that it exists. This is called the meet of $x$ and $y$. We say  $X$ is a conditional meet semilattice if $x \wedge y$ exists whenever $x,y$ have a common lower bound (respectively for the conditional join semilattice). A meet semilattice is just a conditional meet semilattice in which any two elements are bounded below. We say $X$ is a lattice if it admits all meets and joins. We denote the bottom (top) element of a lattice by $0$ (1). We will always assume our meet semilattices admit a top element. We provisionally denote this category of "bounded" conditional meet semilattices by $\mathscr{S}$. 
+ \end{dfn}
+ \end{definitionBox}
+ 
+ \begin{remarkBox}
+ \begin{rmk}
+In this work, we  will mostly deal with meet semilattices. However, notice that a meet semilattice structure gives rise to a join semilattice structure on its opposite category, and their theories are completely equivalent from an algebraic perspective.
+ \end{rmk}
+ \end{remarkBox}
+
+
+ \begin{remarkBox}
+ \begin{rmk}
+There are two very important ways of interpreting the semilattice structure which are crucial for our work. Regarding a poset as a (thin) category, the meet operation defines a categorical product. Hence meet (join) semilattices are thin categories admitting (co)products. The top and bottom elements are terminal and initial objects, and a lower bound of a pair $x,y$ is an element $z$ which is a root of the canonical horn diagram: $x \leftarrow z \rightarrow y$. As a product, $x \wedge y$ is precisely such an element satisfying the universal property.  
+However, we may also interpret the  meet operation algebraically, which turns out to completely capture the order-theory of the lattice and leads to a very fruitful perspective. Namely, we may consider a meet semilattice as an idempotent semigroup or indeed as an idempotent monoid if we assume the existence of the top element $1$. This links the study of semilattices with the theory of idempotent structures, and is at the root of the connection with so-called $\mathbb{B}$-modules whose homological algebra has been studied by Connes and Consani in their work on the fabled field with one element, $F_{un}$. We will draw on this connection later in the work. 
+ \end{rmk}
+  \end{remarkBox}
+
+
+The theory of information cohomology, introduced by Baudot and Bennequin in [ref], is formulated  in the language of information structures. Information structures are essentially semilattice objects in measurable spaces, that is, lattice-indexed diagrams of measurable spaces. It will be desirable to develop the theory of such diagrams more systematically later in our work, but for now we adopt the following definition which is a variation on the ones in our canonical references. 
+
+\begin{theoremBox}
+\begin{dfn}
+    An information structure is a pair $(X, E_{X})$ where $X \in \mathscr{S}$ and $E_{X}$ is a functor $\mathscr{X} \to Meas$, that is an assignment $x \mapsto (E_{x}, \sigma_{E_{x}})$such that:
+    \begin{enumerate}
+        \item $E_{X}$ preserves the terminal object, that is, $(E_{1}, \sigma_{{E_{1}}})$ is the one-point set with the trivial $\sigma$-algebra, 
+        \item For every $x \in X$, and $s \in E_{x}$, the singleton $\{s\}$ belongs to $\sigma_{E_{x}}$,
+        \item For every morphism $x \in y$ in $X$, there is a surjection $E_{x} \to E_{y}$,
+        \item Every "meet horn"
+         \beq
+\begin{tikzcd}
+  & x \wedge y \arrow[ld, shift right] \arrow[rd] &   \\
+x &                                      & y
+\end{tikzcd}
+         \eeq
+    \end{enumerate}
+induces a set injection:
+\beq
+E_{X \wedge Y} \hookrightarrow E_{x} \times E_{y}
+\eeq
+\end{dfn}
+\end{theoremBox}
+
+We will reserve the intuitive interpretation of these definitions for later. For now, we will proceed to construct the theory of information cohomology on this basis. Consider the $\mathscr{X}_{x/}$ the co-slice category of $x \in X$. We may in fact identify this category with a submonoid of $X$ with the inherited order (hence, meet) structure, which motivates the following definition.
+
+\begin{theoremBox}
+\begin{dfn}
+Given a meet semilattice $X$, we define the up-set presheaf $I: X \to Mon$ as the functor which sends an element $x$ to the interval monoid  $I_{x} := [x,1]$. Equipping $X$ with the codiscrete topology, this presheaf becomes a sheaf of monoids which we denote by $I_{X}$. Further, this construction also defines a sheaf of algebras, which we denote by $\mathscr{A}$, which sends $x$ to the monoid algebra $\mathbb{R}[I_{x}]$ of $I_{x}$.
+\end{dfn}
+\end{theoremBox}
+
+
+  Denote by $\mathscr{A}$-Mod the abelian category of $\mathscr{A}$-modules and let $\mathbb{R}_{X}$ be the $\mathscr{A}$-module equipped with the trivial action. Then we may immediately define:
+  \begin{theoremBox}
+    \begin{dfn}
+    The information cohomology groups of $(X,E_{X})$ with coefficients in $\mathscr{M} \in \mathscr{A}-Mod$ are just the Ext groups:
+    \beq
+    H^{*}(X, \mathscr{M}) := Ext^{*}(\mathbf{R}_{X}, \mathscr{M})
+    \eeq. 
+   \end{dfn}
+   \end{theoremBox}
+The interest of this definition will follow from the choice of $\mathscr{M}$. To illustrate, we offer the following constructions to wrap up our introduction to the theory of information cohomology.
+
+\begin{theoremBox}
+\begin{dfn}
+Given an information structure $(X, E_{X})$, we define the probability functor to be the functor $\mathscr{P}: X \to Set$ which assigns to $x \in  X$ the set of probability distributions on $E_{X}(x)$, and to a morphism $f: x \to y$ the marginalization map defined by:
+\beq
+(\mathscr{P}(f)(p))(s)= \sum_{t \in E^{-1}_{f}(s)} \, p(t)
+\eeq
+where $p \in \mathscr{P}(x)$ and $s \in E_{y}$. Further,we define the functional module to be the sheaf of $\mathscr{A}$-modules $\mathscr{F}$ whose underlying functor assigns to $x \in X$ the set of measurable functions on $\mathscr{P}(x)$, where for any $f \in \mathscr{F}(x)$, the $\mathscr{A}$-action is given by the  "conditioning" operation defined as follows: 
+\beq
+(i.f)(p) =  \Sigma_{t \in E_{i}}  p(t) f(p \vert_{t})
+\eeq
+
+where $p \vert_{t}(s) := \frac{p(s)}{p(t)}$ if $t \in E_{f}(s)$ and $0$ otherwise. Of course, this latter is just a spin on conditional probability.
+
+\end{dfn}
+\end{theoremBox}
+
+
+After imposing a few more technical conditions, the theory sketched out above turns out to have enough content to reproduce Shannon entropy and relative entropy purely as a matter of course, where these canonical information theoretic quantities feature as cocycles in information cohomology and whose axiomatic characterization acquires a cohomological interpretation which is ripe for generalization. 
+
+As we mentioned, the theory of semilattices enjoy a most curious connection to a surprising area of mathematics, algebra and geometry over the mysterious $\mathbb{F}_{un}$ by way of the work of Connes and Consani on the homological algebra of $\mathbb{B}$-modules. We briefly discuss this provocative connection. First, we introduce some definitions.
+
+\begin{theoremBox}
+\begin{dfn}
+ We let $\mathbb{B}$ denote the Boolean semifield $\{0,1 \}$ with its idempotent additive structure. Modules over $\mathbb{B}$ are nothing but commutative idempotent monoids. We denote their category by $Mod_{\mathbb{B}}$. 
+\end{dfn}
+\end{theoremBox}
+
+
+As hinted before, the $\mathbb{B}$-module structure is yet another way of encapsulating the structure of a  join (or meet) semilattice. Put more precisely, there is an equivalence of categories $\mathscr{S} \cong Mod_{\mathbb{B}}$ which is almost immediate after translating the join semilattice structure into the idempotent additive one by observing that $x \leq y \implies x \vee y = y \implies x + y = y$. The equivalence can naturally be phrased in terms of the meet semilattice structure as they describe the same idempotent monoid. Connes and Consani develop a theory of homological algebra for $\mathbb{B}$-modules by way of a detour through some extensions of $Mod_{\mathbb{B}}$ which makes use of the formalism of homological categories. This formalism was introduced as a way of porting techniques from homological algebra into non-abelian and indeed non-exact settings. By virtue of the equivalence we discussed before, this work becomes highly relevant for the detailed classification of information structures and the development of a more refined theory of invariants for them. 
+
+Finally, we briefly discuss Markov categories. Instead of introducing the general concept, we will cover the most concrete example of a Markov category, which was also the first, the category of Markov kernels. First we define Markov kernels, which can be thought of as probabilistic morphisms from one measurable space to another; instead of defining a pointwise map, a Markov kernel gives us a probability distribution on the target space parametrized by the domain. 
+
+\begin{theoremBox}
+\begin{dfn}
+Given two measurable spaces $(X,\sigma_{X})$ and $(Y,\sigma_{Y})$, a Markov kernel $K(x \vert S)$ is a map $X \times \sigma_{Y} \to [0,1]$ that is measurable in the first argument and a probability measure in the second. 
+\end{dfn}
+\end{theoremBox}
+
+\begin{theoremBox}
+\begin{dfn}
+The category of Markov kernels, also referred to as the stochastic category $Stoch$, is the category whose objects are measurable spaces and whose morphisms are Markov kernels.   
+\end{dfn}
+\end{theoremBox}
+
+
+We consider Markov kernels in terms of the induced correspondence $K: (X,\sigma_{X}) \to (Y,\sigma_{Y})$, which we will denote by a squiggly arrow $X \rightsquigarrow Y$. It's in fact a non-trivial fact that these definitions give rise to a category, as the composition of morphisms does not seem to be obviously defined. Indeed, the composition law for two  Markov kernels $K:(X,\sigma_{X}) \to (Y, \sigma_{Y})$ and $L: (Y,\sigma_{Y}) \to (Z, \sigma_{Z})$ is given by the so-called Chapman-Kolmogorov equation: 
+\beq
+K \circ L (x \vert U) := \int_{Y} K(y \vert U) L(dy \vert x)
+\eeq
+
+where $U \in \sigma_{Z}$. This defines an associative composition operation with identity, so we do indeed have a category structure. In fact, it turns out there is another way of obtaining the category $Stoch$, which is as the Kleisli category of the Giry monad on $Meas$, which we now define. 
+
+\begin{theoremBox}
+\begin{dfn}
+The Giry monad has as its underlying endofunctor the functor $G: Meas \to Meas$ which assigns to a measurable space $X$ the set of probability measures on it with its usual measurable structure: $G(X)$ is equipped  with the smallest $\sigma$-algebra that makes the maps $\epsilon_{K}: G(X) \to \mathbb{R}$ measurable, where $K \in \sigma_{X}$ and $\epsilon_{K}(p) := p(K)$. The unit maps $x \overset{e}{\longrightarrow} \delta_{x}$ and the multiplication maps $GG(X) \overset{\mu}{\longrightarrow} G(X)$ where $\mu(q)(-) := \int_{q \in G(X)} q(-) dq$ promote this endofunctor to a monad. 
+\end{dfn}
+\end{theoremBox}
+
+\begin{theoremBox}
+\begin{rmk}
+$Stoch$ is the Kleisli category of the Giry monad. 
+\end{rmk}
+\end{theoremBox}
+
+
+It seems evident that the construction of information cohomology can be refined by the use of the Giry monad and the stochastic category introduced above. But there is a more profound motivation for the inclusion of this construction in our scheme. While we cannot expand on this point within the scope of this document, the appeal of this construction and its generalizations is that it gives a flexible axiomatic framework in which to  model information and probability theoretic notions. No attempt has been made in the literature to integrate the formalism of information cohomology into an axiomatic framework in the fashion of Markov categories. This is one of our goals in this thesis,  which we proceed to elaborate below. 
+
+\section{Research Objectives}
+We have a number of related objectives in this thesis. The first objective is to develop and extend the theory of information structures in several theoretical directions. First of all, we intend to sharpen the definition of information structures by developing a theory of indexed diagrams of measurable spaces (or some noncommutative analogue thereof), which will require a foray into 2-categories, touching on the "categorified measure theory" of G. Rodriguez. We hope that such a fundamental overhaul of the framework will in turn afford a more natural environment for the categorification of singular concepts like entropy which might otherwise seem ad-hoc (see Baez-Fritz for an attempt at this), and help us discover new relations which might be obscured by the poverty of structure in the current setting. Further, by leveraging the theory of $\mathbb{B}$-modules, we intend to develop a sort of motivic theory based on information cohomology which will allow us to classify and define more refined invariants for information structures, thereby allowing us to identify seemingly distinct information theoretic phenomena and perhaps reduce the study of complex problems in that setting to that of simpler ones, as cohomology theories are designed to do in other areas of mathematics. However, we also expect that the appearance of $\mathbb{B}$-modules is far from a matter of computational convenience in this setting and there must be some profound connections between the deeper algebraic and categorical structures that appear in information theory and so-called absolute mathematics. In the more speculative parts of the thesis, we will discuss these connections and many related topics, such as the appearance of zeta functions in the arithmetic of entropy-like quantities. 
+The second objective has already been touched upon at the end of the previous section. We intend to build an axiomatic framework, in the mold of Markov categories and their generalizations, in which categorified concepts from information and probability theory acquire intuitive interpretations. 
+\begin{section}{References}
+\vspace{1cm}
+\begin{center}
+
+\begin{enumerate}[label={[\arabic*]}]
+  \item Pierre Baudot, Daniel Bennequin. The Homological Nature of Entropy. Entropy 2015, 17(5), 3253-3318. 
+  \item Juan Pablo Vigneaux. Information Structures and their Cohomology.Theory and Applications of Categories, Vol. 35, No. 38, 2020, pp. 1476–1529.
+  \item Herbert Dubé. On the Structure of Information Cohomology. PhD Thesis.
+  \item Alain Connes, Caterina Consani. Homological Algebra in Characteristic One. Higher Structures 3(1):155–248, 2019
+  \item Paolo Perrone. Markov Categories and Entropy. Preprint, 2023
+  \item Michèle Giry, A categorical approach to probability theory, Categorical aspects of topology and analysis, Lecture notes in Mathematics 915, Springer, 1982.
+  \item John C. Baez, Tobias Fritz. A Bayesian Characterization of Relative Entropy. Preprint, 2014.
+
+
+\end{enumerate}
+    \end{center}
+
+\end{section}
+
+\begin{section}{The Algebra of Entropy}
+It might seeem that to avoid getting up tangled in conflicting formalisms, it's desirable to decide at the outset the nature of the entropy function; its domain and target, its scope and constraints. While such a decision would doubtless be too restrictive in the general framework of this thesis, for the purposes of this chapter, we do make such a decision and stick to it. 
+
+\end{section}
+
+\end{document}
+
